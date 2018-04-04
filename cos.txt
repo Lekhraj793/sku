@@ -1,0 +1,63 @@
+ <form id="" action="<?php URL::to('shopify/settings');?>" method="post">
+
+                                    <?php
+                                    $duedate_button_enable=0;
+                                    foreach($settings as $setting) {
+                                        if ($setting->entity_name == 'duedate_button_enable') {$duedate_button_enable = $setting->entity_value;}
+                                    }
+
+                                    ?>
+
+
+                                <div class="form-group">
+                                  <label>Do you want to show due date on Lookup page ?</label></br>
+                                  <input type="radio" name="duedate_button_enable" id="duedate_button_label1" value="1"<?php if($duedate_button_enable==1){echo 'checked';}?>>
+                                    <label for="duedate_button_label1"> Yes</label><br>
+
+
+                                  <input type="radio" name="duedate_button_enable" id="duedate_button_label2" value="0" <?php if($duedate_button_enable==0){echo 'checked';}?>>
+                                    <label for="duedate_button_label2">No</label><br>
+                                </div>
+                                    <button type="submit" id="" class="main-btn btn-green">Save</button>
+                                    <button type="reset" id="" class="main-btn btn-red">Cancel</button>
+                                    <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
+                                    <input type="hidden" name="tabs" value="duedatesettings">
+
+
+
+
+
+                                </form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ <form id="frmEmbedFormSettings" action="<?php URL::to('shopify/settings');?>" method="post">
+                                    <?php
+                                        $embed_button_label='';
+                                        foreach($settings as $setting){
+                                                if($setting->entity_name == 'embed_button_label'){ $embed_button_label=$setting->entity_value;}
+                                        }
+
+                                    ?>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Enter Embed Form Button Label</label>
+                                        <input type="text" class="form-control" value="<?php if($embed_button_label){echo $embed_button_label;}else{echo 'Submit';}; ?>" name="embed_button_label" id="embed_button_label" placeholder="" required>
+                                    </div>
+
+                                    <button type="submit" id="" class="main-btn btn-green">Save</button>
+                                    <button type="reset" id="" class="main-btn btn-red">Cancel</button>
+                                    <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
+                                    <input type="hidden" name="tabs" value="embedsettings">
+
+                                </form>
